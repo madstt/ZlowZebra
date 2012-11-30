@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZlowZebra", "ZlowZebra.csproj", "{3164FB5A-DE8B-4B16-9C68-3E3920243528}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZlowZebra", "ZlowZebra\ZlowZebra.csproj", "{3164FB5A-DE8B-4B16-9C68-3E3920243528}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
