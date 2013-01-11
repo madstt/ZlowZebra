@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.NetworkInformation;
+using ZlowZebra.Exceptions;
 
 namespace ZlowZebra.Servers
 {
@@ -36,18 +37,16 @@ namespace ZlowZebra.Servers
             get { return ipAddresses; }
         }
 
-        public bool Ping()
+        public PingReply Ping()
         {
-            var pingCommand = new Ping();
-            
             if (ipAddresses.Count == 0)
             {
-                return false;
+                throw new InvalidUrlException();
             }
+            
+            var pingCommand = new Ping();
 
-            var reply = pingCommand.Send(ipAddresses[0]);
-
-            return reply.Status == IPStatus.Success;
+            return pingCommand.Send(ipAddresses[0]);
         }
 
         private Uri toUri(string uri)

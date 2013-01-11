@@ -1,5 +1,6 @@
-﻿using System;
+﻿using System.Net.NetworkInformation;
 using NUnit.Framework;
+using ZlowZebra.Exceptions;
 using ZlowZebra.Servers;
 
 namespace ZlowZebra.Tests.Integration
@@ -70,10 +71,10 @@ namespace ZlowZebra.Tests.Integration
             var server = new HttpServer("madstt.dk");
 
             //Act
-            var pingSuccess = server.Ping();
+            var reply = server.Ping();
 
             //Assert
-            Assert.True(pingSuccess);
+            Assert.True(reply.Status == IPStatus.Success);
         }
 
         [Test]
@@ -83,10 +84,8 @@ namespace ZlowZebra.Tests.Integration
             var server = new HttpServer("foo.bar");
 
             //Act
-            var pingSuccess = server.Ping();
-
             //Assert
-            Assert.IsFalse(pingSuccess);
+            Assert.Throws<InvalidUrlException>(() => server.Ping());
         }
     }
 }
