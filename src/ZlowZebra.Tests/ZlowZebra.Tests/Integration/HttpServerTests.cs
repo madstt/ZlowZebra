@@ -78,6 +78,19 @@ namespace ZlowZebra.Tests.Integration
         }
 
         [Test]
+        public void PingCorrectIpAddress()
+        {
+            //Arrange
+            var server = new HttpServer("madstt.dk");
+
+            //Act
+            var reply = server.Ping();
+
+            //Assert
+            Assert.IsTrue(reply.Address.ToString() == "94.231.106.54");
+        }
+
+        [Test]
         public void PingFailureTest()
         {
             //Arrange
