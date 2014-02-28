@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
 using System.Net.NetworkInformation;
 using ZlowZebra.Exceptions;
 
 namespace ZlowZebra.Servers
 {
-    public class HttpServer
+    public class HttpServer : HttpClient
     {
         private readonly Uri url;
         private readonly List<IPAddress> ipAddresses;
 
         public HttpServer(string url)
         {
-            this.url = toUri(url);
+            this.url = ToUri(url);
 
             try
             {
@@ -49,7 +50,7 @@ namespace ZlowZebra.Servers
             return pingCommand.Send(ipAddresses[0]);
         }
 
-        private Uri toUri(string uri)
+        private Uri ToUri(string uri)
         {
             if (string.IsNullOrEmpty(uri))
             {
